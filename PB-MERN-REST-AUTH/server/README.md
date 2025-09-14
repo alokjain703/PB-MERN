@@ -12,3 +12,11 @@ Uses MVC pattern with Controllers, models, routes and services
 $ npm run dev
 $ npm run start
 
+##  create User
+{
+    "name":"Alok",
+    "userId": "alokj1",
+    "eamil":"alokj@gmail.com",
+    "password": "abc123"
+}
+
