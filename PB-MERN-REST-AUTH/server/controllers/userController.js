@@ -1,7 +1,5 @@
   import userService from '../services/userService.js';
 
-
-
 const userController = {
    getUsers: async (req, res) => {
        try {
@@ -22,12 +20,14 @@ const userController = {
    },
    createUser: async (req, res) => {
        try {
+        console.log("Creating user with data:", req.body);
            const newUser = await userService.createUser(req.body);
            res.status(201).json(newUser);
        } catch (err) {
            res.status(400).json({ message: err.message });
        }
    },
+
    updateUser: async (req, res) => {
        try {
            const updatedUser = await userService.updateUser(req.params.id, req.body);

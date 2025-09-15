@@ -4,6 +4,7 @@
     import cors from 'cors';
     import dotenv from 'dotenv';
     import userRoutes from './routes/userRoutes.js';
+    import authRoutes from './routes/authRoutes.js';
     dotenv.config();
 
    const app = express();
@@ -23,7 +24,7 @@
    .catch(err => console.log(err));
 
    // Routes
-   // app.use('/api/auth', require('./routes/auth'));
+   app.use('/api/auth', authRoutes);
    app.use('/api/users', userRoutes);
 
    // test api health check

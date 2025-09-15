@@ -1,4 +1,16 @@
 # PB-MERN-REST-AUTH
+
+## TTD 
+- BE add roles to payload
+- BE add logout route
+- FE restrict pages based on roles
+- FE send token each request and check on backend
+- Store auth details in locall storage with persist middleware zustand
+
+
+
+
+
 Uses MVC pattern with Controllers, models, routes and services
 
 ## Running the server
@@ -16,7 +28,7 @@ $ npm run start
 {
     "name":"Alok",
     "userId": "alokj1",
-    "eamil":"alokj@gmail.com",
+    "email":"alokj@gmail.com",
     "password": "abc123"
 }
 
