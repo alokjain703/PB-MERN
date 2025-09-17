@@ -17,7 +17,7 @@ const HomePage = () => {
       <Box sx={{ p: 4 }}>
         {isAuthenticated ? (
           <Box>
-            <Typography variant="h4">Welcome, {user?.username}!</Typography>
+            <Typography variant="h4">Welcome, {user?.userId}!</Typography>
             <Button variant="contained" onClick={logout} sx={{ mt: 2 }}>
               Logout
             </Button>

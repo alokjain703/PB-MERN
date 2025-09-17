@@ -136,6 +136,12 @@ function ResponsiveAppBar() {
               >
                 About
               </Button>
+              <Button
+                onClick={() => { navigate('/admin'); }}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Admin
+              </Button>
           </Box>
 
           {/** User settings menu: visible on all screen sizes */}

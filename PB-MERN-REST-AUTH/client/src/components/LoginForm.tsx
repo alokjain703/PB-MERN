@@ -21,9 +21,10 @@
           });
           const data = await response.json();
           if (response.ok) {
-            login(data.token, data.userId);
-            console.log('Login successful');
-            console.log('data:', data);
+            console.log("data from login:", data);
+            console.log('userId:', data.user.userId);
+            login(data.token, data.user.userId);
+            
           } else {
             console.error('Login failed:', data.message);
           }

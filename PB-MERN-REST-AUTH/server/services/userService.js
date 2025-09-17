@@ -17,6 +17,22 @@ const userService = {
    deleteUser: async (id) => {
        return await User.findByIdAndDelete(id);
    },
+   addroleToUser: async (userId, role) => {
+       const user = await User.findById(userId);
+       if (!user) throw new Error('User not found');
+       if (!user.roles.includes(role)) {
+           user.roles.push(role);
+           await user.save();
+       }
+       return user;
+   },
+   removeRoleFromUser: async (userId, role) => {
+       const user = await User.findById(userId);
+       if (!user) throw new Error('User not found');
+       user.roles = user.roles.filter(r => r !== role);
+       await user.save();
+       return user;
+   }
 };
 
 export default userService;

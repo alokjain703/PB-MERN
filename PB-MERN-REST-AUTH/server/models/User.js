@@ -31,6 +31,11 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  // add roles
+  roles: {
+    type: [String],
+    default: ['user'], // Default role is 'user'
+  },
 });
 
 // Pre-save hook to hash the password before saving
