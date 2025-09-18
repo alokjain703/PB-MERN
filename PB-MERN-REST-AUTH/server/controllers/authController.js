@@ -10,6 +10,25 @@ const authController = {
        } catch (err) {
            res.status(400).json({ message: err.message });
        }
+   },
+    addRole: async (req, res) => {
+       try {
+           const { userId, roleName } = req.body;
+           const result = await authService.addRole(userId, roleName);
+           res.json(result);
+       } catch (err) {
+           res.status(400).json({ message: err.message });
+       }
+   },
+
+   removeRole: async (req, res) => {
+       try {
+           const { userId, roleName } = req.body;
+           const result = await authService.removeRole(userId, roleName);
+           res.json(result);
+       } catch (err) {
+           res.status(400).json({ message: err.message });
+       }
    }
 };
 

@@ -21,14 +21,14 @@ export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
   user: null,
   token: null,
-  login: (token, user) =>
+  login: (token) =>
   {
     // get the payload from the token
     const payload = JSON.parse(atob(token.split('.')[1]));
     console.log('payload from token:', payload);
-    set({ isAuthenticated: true, user: { ...user, id: payload.id }, token })
+    set({ isAuthenticated: true, user: { ...payload } })
     // save to local storage
-    localStorage.setItem('auth', JSON.stringify({ token, user }));
+    localStorage.setItem('auth', JSON.stringify({ token, user: { ...payload } }));
   },
   logout: () => {
     set({ isAuthenticated: false, user: null, token: null });
