@@ -5,6 +5,7 @@
     import dotenv from 'dotenv';
     import userRoutes from './routes/userRoutes.js';
     import authRoutes from './routes/authRoutes.js';
+    import blogRoutes from './routes/blogRoutes.js';
     dotenv.config();
 
    const app = express();
@@ -26,6 +27,7 @@
    // Routes
    app.use('/api/auth', authRoutes);
    app.use('/api/users', userRoutes);
+    app.use('/api/blogs', blogRoutes);
 
    // test api health check
     app.get('/api/health', (req, res) => {
