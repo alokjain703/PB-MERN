@@ -1,6 +1,6 @@
 // Home page content goes here
 
-import { useAuthStore } from "../store/authStore";
+import { useAuthStore } from "../store/AuthStore";
 import { Box, Button, Typography } from "@mui/material";
 import LoginForm from "../components/LoginForm";
 import RegisterForm from "../components/RegisterForm";
@@ -11,7 +11,7 @@ const HomePage = () => {
    
       <div className="p-4">
         <h2 className="text-2xl font-semibold mb-4">
-          Welcome to Auth and Blog Demo - MERN(MongoDB, Express, React, Node.js) Stack with GraphQL
+          Welcome to Auth and Blog Demo - MERN(MongoDB, Express, React, Node.js) Stack with REST API
         </h2>
         <p>This is the main landing page of the blog application.</p>
       
