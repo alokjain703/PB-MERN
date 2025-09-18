@@ -1,9 +1,10 @@
 // Home page content goes here
-import React from "react";
+
 import { useAuthStore } from "../store/authStore";
 import { Box, Button, Typography } from "@mui/material";
 import LoginForm from "../components/LoginForm";
 import RegisterForm from "../components/RegisterForm";
+
 const HomePage = () => {
   const { isAuthenticated, user, logout } = useAuthStore();
   return (
@@ -26,6 +27,7 @@ const HomePage = () => {
           <>
             <LoginForm />
             <RegisterForm />
+            
           </>
         )}
       </Box>

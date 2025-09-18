@@ -19,6 +19,14 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/blog" element={<BlogPage />} />
+        {/* <Route
+          path="/admin"
+          element={
+            
+                <AdminPage />
+              
+          }
+        /> */}
 
         <Route
           path="/admin"

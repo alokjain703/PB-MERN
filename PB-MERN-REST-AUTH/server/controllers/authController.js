@@ -29,7 +29,24 @@ const authController = {
        } catch (err) {
            res.status(400).json({ message: err.message });
        }
-   }
+   },
+    getAvailableRoles: async (req, res) => {
+       try {
+           const roles = await authService.getAvailableRoles();
+           res.json(roles);
+       } catch (err) {
+           res.status(400).json({ message: err.message });
+       }
+   },
+    getRolesForUser: async (req, res) => {
+       try {
+           const { userId } = req.params;
+           const roles = await authService.getRolesForUser(userId);
+           res.json(roles);
+       } catch (err) {
+           res.status(400).json({ message: err.message });
+       }
+   },
 };
 
 export default authController;
