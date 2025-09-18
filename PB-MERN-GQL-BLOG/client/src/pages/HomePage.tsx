@@ -11,7 +11,7 @@ const HomePage = () => {
    
       <div className="p-4">
         <h2 className="text-2xl font-semibold mb-4">
-         Welcome to Auth Demo - MERN(MongoDB, Express, React, Node.js) Stack with REST API
+          Welcome to Auth and Blog Demo - MERN(MongoDB, Express, React, Node.js) Stack with GraphQL
         </h2>
         <p>This is the main landing page of the blog application.</p>
       
