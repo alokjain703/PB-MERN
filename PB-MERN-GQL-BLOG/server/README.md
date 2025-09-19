@@ -1,5 +1,13 @@
 # PB-MERN-REST-AUTH
 
+## GQL Getting Started
+install a VS Code extension to add GraphQL language support. Go to the Extensions tab and search for the GraphQL.vscode-graphql
+
+$ pnpm install graphql@16.8.1 
+ Deprecated --- @apollo/server@4.10.0
+
+$ pnpm install @as-integrations/express5
+
 ## TTD 
 - BE add roles to payload
 - BE add logout route
