@@ -6,14 +6,23 @@ const blogController = {
     res.json(posts);
   },
 
+  getPaginatedSummaryOfPosts: async (req, res) => {
+    console.log("Query params:", req.query);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const sortBy = req.query.sortBy || 'createdAt';
+    const result = await blogService.getPaginatedSummaryOfPosts(page, limit, sortBy);
+    res.json(result);
+  },
+
   getPostById: async (req, res) => {
     const post = await blogService.getPostById(req.params.id);
     res.json(post);
   },
 
   createPost: async (req, res) => {
-    const { title, content, authorId } = req.body;
-    const newPost = await blogService.createPost(title, content, authorId);
+    const { title, content, authorId, excerpt, tags, category } = req.body;
+    const newPost = await blogService.createPost(title, content, authorId, excerpt, tags, category);
     res.status(201).json(newPost);
   },
 
