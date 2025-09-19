@@ -9,10 +9,12 @@ import Avatar from "@mui/material/Avatar";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import { Pagination, Select, MenuItem } from "@mui/material";
+import { useBlogStore } from "../../store/BlogStore";
 
 interface BlogPost {
   _id: string;
   title: string;
+  content: string;
   excerpt: string;
   author: {
     name: string;
@@ -26,6 +28,7 @@ const BlogList = () => {
   const [totalNumberOfPages, setTotalNumberOfPages] = useState(1);
   const [totalPosts, setTotalPosts] = useState(0);
   const [blogsPerPage, setBlogsPerPage] = useState<number>(3);
+  const { currentPost, setCurrentPost, postMode, setPostMode } = useBlogStore();
 
   const handleBlogsPerPage = (value: number) => {
     setBlogsPerPage(value);
@@ -93,7 +96,20 @@ const BlogList = () => {
                   />
                 </ListItemAvatar>
                 <ListItemText
-                  primary={blog.title}
+                  primary={
+                    <a
+                      href="#"
+                      style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        // Call your click handler here, e.g. setCurrentPost(blog) or setShowPostDetail(true)
+                        setCurrentPost(blog);
+                        setPostMode('viewPost');
+                      }}
+                    >
+                      {blog.title}
+                    </a>
+                  }
                   secondary={
                     <>
                       <Typography

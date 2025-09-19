@@ -18,6 +18,8 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useBlogStore } from '../../store/BlogStore';
+import { Box } from "@mui/material";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -25,6 +27,8 @@ interface ExpandMoreProps extends IconButtonProps {
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
+ 
+
   return <IconButton {...other} />;
 })(
   ({
@@ -48,6 +52,7 @@ const Blog = () => {
   const [dislikes, setDislikes] = React.useState(0);
   const [favorite, setFavorite] = React.useState(false);
   const [favoriteCount, setFavoriteCount] = React.useState(0);
+  const { currentPost, setCurrentPost, postMode, showPostDetail, setShowPostDetail, setPostMode } = useBlogStore();
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -67,6 +72,10 @@ const Blog = () => {
   };
 
   return (
+    <>
+    <Box mb={2}>
+      <Typography variant="h6">{currentPost?.title}  post mode is: {postMode}</Typography>
+    </Box>
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
@@ -151,6 +160,7 @@ const Blog = () => {
         </CardContent>
       </Collapse>
     </Card>
+    </>
   );
 };
 
