@@ -8,6 +8,11 @@ const blogService = {
   createPost: async (title, content, authorId, excerpt, tags, category) => {
     const authorObjectId = new mongoose.Types.ObjectId(authorId);
     console.log('Author ObjectId:', authorObjectId);
+    console.log('Title:', title);
+    console.log('Content:', content);
+    console.log('Excerpt:', excerpt);
+    console.log('Tags:', tags);
+    console.log('Category:', category);
     if (!excerpt) {
       excerpt = content.substring(0, 200); // Default excerpt to first 200 chars
     }
@@ -48,6 +53,13 @@ const blogService = {
     
     return { posts, currentPage: page, totalPages, totalPosts };
   },
+
+  fetchPostsByAuthorId: async (authorId) => {
+    const authorObjectId = new mongoose.Types.ObjectId(authorId);
+    return await BlogPost.find({ author: authorObjectId }).populate('author', 'userId name email').exec();
+  },
+
+
   
   getPostById: async (postId) => {
     return await BlogPost.findById(postId).populate('author', 'userId name email').exec();

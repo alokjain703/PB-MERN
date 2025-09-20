@@ -11,7 +11,7 @@ export const userSchema = `#graphql
 export const userResolver = {
   User: {
     blogs: async (parent) => {
-      return await blogService.getPostsByUserId(parent);
+      return await blogService.fetchPostsByAuthorId(parent.id);
     },
   },
 };

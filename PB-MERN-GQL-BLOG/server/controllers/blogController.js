@@ -15,6 +15,11 @@ const blogController = {
     res.json(result);
   },
 
+  fetchPostsByAuthorId: async (req, res) => {
+    const posts = await blogService.fetchPostsByAuthorId(req.params.authorId);
+    res.json(posts);
+  },
+
   getPostById: async (req, res) => {
     const post = await blogService.getPostById(req.params.id);
     res.json(post);

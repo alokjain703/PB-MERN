@@ -6,6 +6,7 @@ import blogController from '../controllers/blogController.js';
 // Blog post routes
 router.get('/', blogController.getAllPosts);
 router.get('/:id', blogController.getPostById);
+router.get('/author/:authorId', blogController.fetchPostsByAuthorId);
 router.post('/', blogController.createPost);
 router.put('/:id', blogController.updatePost);
 router.delete('/:id', blogController.deletePost);
