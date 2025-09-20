@@ -5,7 +5,10 @@ const userService = {
        return await User.find();
    },
    getUserById: async (id) => {
-       return await User.findById(id);
+        // do NOT return password hash
+       const user = await User.findById(id);
+       user.password = undefined;
+       return user;
    },
    createUser: async (userData) => {
        const newUser = new User(userData);

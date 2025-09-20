@@ -8,6 +8,10 @@ $ pnpm install graphql@16.8.1
 
 $ pnpm install @as-integrations/express5
 
+
+http://localhost:5004/graphql
+
+
 ## TTD 
 - BE add roles to payload
 - BE add logout route
