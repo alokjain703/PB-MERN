@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import { useBlogStore } from '../store/BlogStore';
 import { useQuery as useGraphQLQuery } from '@apollo/client'
-import { GET_POSTS, TEST_QUERY, SCHEMA_QUERIES, 
-  GET_POSTS_ALT1, GET_POSTS_ALT2, GET_POSTS_ALT3, GET_ALL_USERS, TEST_QUERY2 } from '../api/gql/blogs';
+import { GET_POSTS,  GET_ALL_USERS } from '../api/gql/blogs';
 
 const BlogPageGQL = () => {
   const [currentQuery, setCurrentQuery] = useState('SCHEMA_QUERIES');
@@ -11,15 +10,11 @@ const BlogPageGQL = () => {
   // Use the selected query
   const getQuery = () => {
     switch(currentQuery) {
-      case 'TEST_QUERY': return TEST_QUERY;
-      case 'TEST_QUERY2': return TEST_QUERY2;
-      case 'SCHEMA_QUERIES': return SCHEMA_QUERIES;
+      
       case 'GET_POSTS': return GET_POSTS;
-      case 'GET_POSTS_ALT1': return GET_POSTS_ALT1;
-      case 'GET_POSTS_ALT2': return GET_POSTS_ALT2;
-      case 'GET_POSTS_ALT3': return GET_POSTS_ALT3;
+      
       case 'GET_ALL_USERS': return GET_ALL_USERS;
-      default: return SCHEMA_QUERIES;
+      default: return GET_POSTS;
     }
   };
 
@@ -74,7 +69,7 @@ const BlogPageGQL = () => {
       <div className="mb-4">
         <h3 className="text-lg font-semibold mb-2">Select Query to Test:</h3>
         <div className="flex flex-wrap gap-2">
-          {['SCHEMA_QUERIES', 'TEST_QUERY', 'GET_POSTS', 'GET_POSTS_ALT1', 'GET_POSTS_ALT2', 'GET_POSTS_ALT3', 'GET_ALL_USERS', 'TEST_QUERY2'].map((queryName) => (
+          {['GET_POSTS', 'GET_ALL_USERS'].map((queryName) => (
             <button
               key={queryName}
               onClick={() => setCurrentQuery(queryName)}
@@ -101,19 +96,7 @@ const BlogPageGQL = () => {
             </pre>
           </div>
 
-          {/* Display available queries if using SCHEMA_QUERIES */}
-          {currentQuery === 'SCHEMA_QUERIES' && data.__schema?.queryType?.fields && (
-            <div className="mt-4">
-              <h4 className="text-lg font-semibold mb-2">Available Queries:</h4>
-              <ul className="list-disc ml-4">
-                {data.__schema.queryType.fields.map((field: any, index: number) => (
-                  <li key={index} className="mb-1">
-                    <strong>{field.name}</strong> - Type: {field.type.name || field.type.kind}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          
 
           {/* Display blog posts if available */}
           {(data.blogs || data.posts || data.getAllPosts || data.blog) && (
@@ -128,10 +111,10 @@ const BlogPageGQL = () => {
             </div>
           )}
           {/* Display users if available */}
-          {data.users && (
+          {data.getUsers && (
             <div className="mt-4">
               <h4 className="text-lg font-semibold mb-2">Users:</h4>
-              {data.users.map((user: any, index: number) => (
+              {data.getUsers.map((user: any, index: number) => (
                 <div key={index} className="border p-4 mb-4 rounded">
                   <p><strong>ID:</strong> {user.id}</p>
                   <p><strong>Name:</strong> {user.name}</p>
