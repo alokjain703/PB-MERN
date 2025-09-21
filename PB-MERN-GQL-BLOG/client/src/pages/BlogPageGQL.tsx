@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useBlogStore } from '../store/BlogStore';
 import { useQuery as useGraphQLQuery } from '@apollo/client'
 import { GET_POSTS, TEST_QUERY, SCHEMA_QUERIES, 
-  GET_POSTS_ALT1, GET_POSTS_ALT2, GET_POSTS_ALT3, GET_ALL_USERS } from '../api/gql/blogs';
+  GET_POSTS_ALT1, GET_POSTS_ALT2, GET_POSTS_ALT3, GET_ALL_USERS, TEST_QUERY2 } from '../api/gql/blogs';
 
 const BlogPageGQL = () => {
   const [currentQuery, setCurrentQuery] = useState('SCHEMA_QUERIES');
@@ -12,6 +12,7 @@ const BlogPageGQL = () => {
   const getQuery = () => {
     switch(currentQuery) {
       case 'TEST_QUERY': return TEST_QUERY;
+      case 'TEST_QUERY2': return TEST_QUERY2;
       case 'SCHEMA_QUERIES': return SCHEMA_QUERIES;
       case 'GET_POSTS': return GET_POSTS;
       case 'GET_POSTS_ALT1': return GET_POSTS_ALT1;
@@ -73,7 +74,7 @@ const BlogPageGQL = () => {
       <div className="mb-4">
         <h3 className="text-lg font-semibold mb-2">Select Query to Test:</h3>
         <div className="flex flex-wrap gap-2">
-          {['SCHEMA_QUERIES', 'TEST_QUERY', 'GET_POSTS', 'GET_POSTS_ALT1', 'GET_POSTS_ALT2', 'GET_POSTS_ALT3', 'GET_ALL_USERS'].map((queryName) => (
+          {['SCHEMA_QUERIES', 'TEST_QUERY', 'GET_POSTS', 'GET_POSTS_ALT1', 'GET_POSTS_ALT2', 'GET_POSTS_ALT3', 'GET_ALL_USERS', 'TEST_QUERY2'].map((queryName) => (
             <button
               key={queryName}
               onClick={() => setCurrentQuery(queryName)}
@@ -122,6 +123,19 @@ const BlogPageGQL = () => {
                 <div key={index} className="border p-4 mb-4 rounded">
                   <h5 className="font-bold">{blog?.title}</h5>
                   <p>{blog?.contents}</p>
+                </div>
+              ))}
+            </div>
+          )}
+          {/* Display users if available */}
+          {data.users && (
+            <div className="mt-4">
+              <h4 className="text-lg font-semibold mb-2">Users:</h4>
+              {data.users.map((user: any, index: number) => (
+                <div key={index} className="border p-4 mb-4 rounded">
+                  <p><strong>ID:</strong> {user.id}</p>
+                  <p><strong>Name:</strong> {user.name}</p>
+                  <p><strong>Email:</strong> {user.email}</p>
                 </div>
               ))}
             </div>

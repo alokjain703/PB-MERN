@@ -20,7 +20,10 @@ const PORT = process.env.PORT || 5002;
 
 // Middleware (must be before Apollo Server)
 app.use(bodyParser.json());
-app.use(cors());
+// allo all  origins for testing
+app.use(cors({
+  origin: '*', // Replace with your frontend URL
+}));
 
 // MongoDB connection
 const mongoURI = process.env.MONGO_DB_URI;

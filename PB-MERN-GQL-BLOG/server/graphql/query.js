@@ -6,7 +6,7 @@ export const querySchema = `#graphql
     blogs: [Blog]
     blogsByUser(authorId: ID!): [Blog]
     user(id: ID!): User
-    users: [User]
+    getUsers: [User]
   }
 `;
 
@@ -28,7 +28,7 @@ export const queryResolver = {
       console.log('Fetching user with ID:', args.id);
       return await userService.getUserById(args.id);
     },
-    users: async () => {
+    getUsers: async () => {
       console.log('Fetching all users');
       return await userService.getAllUsers();
     }

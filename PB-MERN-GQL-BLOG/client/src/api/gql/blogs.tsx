@@ -65,10 +65,15 @@ export const GET_POSTS_ALT3 = gql`
   }
 `;
 
+export const TEST_QUERY2 = gql`
+  query Test{
+    testField
+  }
+`;
+
 export const GET_ALL_USERS = gql`
-  query {
-    Users {
-      username
+  query getUsers{
+    getUsers {
       email
     }
   }
