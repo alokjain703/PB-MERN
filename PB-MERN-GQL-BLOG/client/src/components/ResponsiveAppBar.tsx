@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 const pages = [
   { name: "Home", path: "/home" },
   { name: "Blog", path: "/blog" },
+  { name: "Blog GQL", path: "/blog-gql" },
   { name: "Admin", path: "/admin" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },

@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 const blogService = {
 
   ///// POST RELATED METHODS
-  createPost: async (title, content, authorId, excerpt, tags, category) => {
+  createPost: async ({title, content, authorId, excerpt, tags, category}) => {
     const authorObjectId = new mongoose.Types.ObjectId(authorId);
     console.log('Author ObjectId:', authorObjectId);
     console.log('Title:', title);
@@ -20,7 +20,7 @@ const blogService = {
       tags = [];
     }
     if (!category) {
-      category = null;
+      category = 'General';
     }
     const status = 'draft'; // Default status
     const  slug = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''); // Simple slug generation

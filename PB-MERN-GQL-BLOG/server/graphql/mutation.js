@@ -74,13 +74,8 @@ export const mutationResolver = {
 
     ////// Blog Post Mutations //////
     createBlogPost: async (parent, args) => {
-      console.log('Creating blog post...');
-      console.log('Input args:', args);
       const { input } = args;
-      console.log('Input data:', input);
-      const { title, content, authorId, excerpt, tags, category } = input;
-      console.log('Extracted fields:', {title, content, authorId, excerpt, tags, category});
-      return await blogService.createPost(title, content, authorId, excerpt, tags, category);
+      return await blogService.createPost(input);
     },
     updateBlogPost: async (parent, args) => {
       const { id, input } = args;

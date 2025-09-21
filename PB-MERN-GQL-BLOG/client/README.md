@@ -8,7 +8,10 @@ http://localhost:5173/
 ## installation
 pnpm install zustand
 
+pnpm install @apollo/client@3.9.5 graphql@16.8.1
 
+For QueryClientProvider
+pnpm install @tanstack/react-query graphql-request
 
 
 
